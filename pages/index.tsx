@@ -1,119 +1,14 @@
 import Head from "next/head";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Home() {
+  const { user } = useAuth();
   return (
     <>
       <Head>
         <title>Home Page</title>
       </Head>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus
-        consequuntur tenetur quidem ipsum est eveniet iusto explicabo, modi,
-        voluptas, aspernatur nobis iste vitae veritatis nemo eos tempora. Ipsam,
-        autem!
-      </div>
+      <div>{`user id : ${user ? user.uid : "no user signed in"}`}</div>
     </>
   );
 }

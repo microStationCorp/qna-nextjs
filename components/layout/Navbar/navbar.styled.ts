@@ -1,3 +1,4 @@
+import { Avatar } from "@material-ui/core";
 import styled from "styled-components";
 
 export const NavContainer = styled.div`
@@ -28,3 +29,4 @@ export const HeaderContainer = styled.div`
 export const HeaderText = styled.span`
   font-size: 2.5rem;
 `;
+

@@ -1,12 +1,6 @@
 import Link from "next/link";
-import { IconButton, Tooltip } from "@material-ui/core";
-import {
-  Edit,
-  Chat,
-  FormatListBulletedOutlined,
-  AccountCircleOutlined,
-} from "@material-ui/icons";
-import { useContext, useState } from "react";
+import { IconButton, Tooltip, Avatar } from "@material-ui/core";
+import { Edit, Chat, FormatListBulletedOutlined } from "@material-ui/icons";
 import {
   NavContainer,
   HeaderContainer,
@@ -14,9 +8,10 @@ import {
   NavbarItemsContainer,
 } from "./navbar.styled";
 import { FaSignInAlt } from "react-icons/fa";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function Navbar() {
-  const [auth, setAuth] = useState(false);
+  const { user } = useAuth();
   return (
     <>
       <NavContainer>
@@ -27,7 +22,7 @@ export default function Navbar() {
         </HeaderContainer>
 
         <NavbarItemsContainer>
-          {auth ? (
+          {user ? (
             <>
               <Link href="/newq">
                 <Tooltip title="New Query">
@@ -51,9 +46,13 @@ export default function Navbar() {
                 </Tooltip>
               </Link>
               <Link href="/user">
-                <Tooltip title="Avatar">
+                <Tooltip title={user?.displayName}>
                   <IconButton>
-                    <AccountCircleOutlined />
+                    <Avatar
+                      style={{ height: "35px", width: "35px" }}
+                      alt={user?.displayName}
+                      src={user?.photoURL}
+                    />
                   </IconButton>
                 </Tooltip>
               </Link>
