@@ -1,12 +1,15 @@
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import "../styles/globals.css";
 import Layout from "../components/layout/Layout";
+import { AuthContextProvider } from "../context/authContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthContextProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthContextProvider>
   );
 }
 
