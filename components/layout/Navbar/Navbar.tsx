@@ -14,11 +14,9 @@ import {
   NavbarItemsContainer,
 } from "./navbar.styled";
 import { FaSignInAlt } from "react-icons/fa";
-import { AuthContext, ContextI } from "../../../context/authContext";
 
 export default function Navbar() {
-  const { auth } = useContext(AuthContext) as ContextI;
-
+  const [auth, setAuth] = useState(false);
   return (
     <>
       <NavContainer>
