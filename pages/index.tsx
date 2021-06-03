@@ -1,14 +1,51 @@
 import Head from "next/head";
-import { useAuth } from "../hooks/useAuth";
+import nookies from "nookies";
+import { verifyIdToken } from "../firebase/firebaseAdmin";
 
-export default function Home() {
-  const { user } = useAuth();
+interface propsI {
+  name?: string;
+  email?: string;
+  picture?: string;
+  uid?: string;
+  isAuth: boolean;
+}
+
+export default function Home({ name, email, picture, isAuth, uid }: propsI) {
   return (
     <>
       <Head>
         <title>Home Page</title>
       </Head>
-      <div>{`user id : ${user ? user.uid : "no user signed in"}`}</div>
+      {isAuth ? (
+        <>
+          <div>
+            {name}'s Page{`user id ${uid}`}
+          </div>
+          <div>email : {email}</div>
+          <div>picture : {picture}</div>
+        </>
+      ) : (
+        <div>home page</div>
+      )}
     </>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  try {
+    const cookies = nookies.get(context);
+    const token = await verifyIdToken(cookies.token);
+    const { name, email, uid, picture } = token;
+    return {
+      props: {
+        name,
+        email,
+        uid,
+        picture,
+        isAuth: true,
+      },
+    };
+  } catch (err) {
+    return { props: { isAuth: false } };
+  }
 }

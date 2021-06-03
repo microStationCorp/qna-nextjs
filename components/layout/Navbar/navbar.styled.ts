@@ -30,3 +30,20 @@ export const HeaderText = styled.span`
   font-size: 2.5rem;
 `;
 
+export const DropDownContainer = styled.div`
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  width: 250px;
+  background-color: #d4dcd7;
+  padding: 1rem;
+  border-radius: 10px;
+`;
+
+export const DropDownItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 0.5rem;
+`;

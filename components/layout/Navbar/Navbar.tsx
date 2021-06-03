@@ -1,17 +1,24 @@
 import Link from "next/link";
-import { IconButton, Tooltip, Avatar } from "@material-ui/core";
+import { IconButton, Tooltip, Avatar, Button } from "@material-ui/core";
 import { Edit, Chat, FormatListBulletedOutlined } from "@material-ui/icons";
 import {
   NavContainer,
   HeaderContainer,
   HeaderText,
   NavbarItemsContainer,
+  DropDownContainer,
+  DropDownItemContainer,
 } from "./navbar.styled";
 import { FaSignInAlt } from "react-icons/fa";
 import { useAuth } from "../../../hooks/useAuth";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { auth } from "../../../firebase/firebaseMain";
+import Router from "next/router";
 
 export default function Navbar() {
   const { user } = useAuth();
+  const [open, setOpen] = useState(false);
   return (
     <>
       <NavContainer>
@@ -45,17 +52,18 @@ export default function Navbar() {
                   </IconButton>
                 </Tooltip>
               </Link>
-              <Link href="/user">
-                <Tooltip title={user?.displayName}>
-                  <IconButton>
-                    <Avatar
-                      style={{ height: "35px", width: "35px" }}
-                      alt={user?.displayName}
-                      src={user?.photoURL}
-                    />
-                  </IconButton>
-                </Tooltip>
-              </Link>
+              <IconButton
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                <Avatar
+                  style={{ height: "35px", width: "35px" }}
+                  alt={user?.displayName}
+                  src={user?.photoURL}
+                />
+              </IconButton>
+              {open && <DropDown data={user} />}
             </>
           ) : (
             <Link href="/login">
@@ -69,5 +77,31 @@ export default function Navbar() {
         </NavbarItemsContainer>
       </NavContainer>
     </>
+  );
+}
+
+function DropDown(props: any) {
+  function DropDownItem(props: React.PropsWithChildren<{}>) {
+    return <DropDownItemContainer>{props.children}</DropDownItemContainer>;
+  }
+
+  return (
+    <DropDownContainer>
+      <DropDownItem>Hello {props.data.displayName}</DropDownItem>
+      <DropDownItem>{props.data.email}</DropDownItem>
+      <DropDownItem>
+        <Button
+          color="inherit"
+          variant="outlined"
+          onClick={() => {
+            auth.signOut().then(() => {
+              Router.replace("/");
+            });
+          }}
+        >
+          Sign Out
+        </Button>
+      </DropDownItem>
+    </DropDownContainer>
   );
 }

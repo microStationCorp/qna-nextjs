@@ -16,8 +16,9 @@ export default function LoginPage() {
         variant="contained"
         color="primary"
         onClick={() => {
-          auth.signInWithPopup(provider);
-          Router.replace("/");
+          auth.signInWithPopup(provider).then(() => {
+            Router.replace("/");
+          });
         }}
       >
         sign in with google
